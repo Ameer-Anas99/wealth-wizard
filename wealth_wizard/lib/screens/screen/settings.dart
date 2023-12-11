@@ -13,7 +13,7 @@ class settings extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: const Color.fromARGB(255, 95, 13, 109),
-        title: const Center(
+        title: Center(
           child: Text(
             'Settings',
             style: TextStyle(
