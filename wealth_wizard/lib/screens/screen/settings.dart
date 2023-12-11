@@ -55,7 +55,7 @@ class settings extends StatelessWidget {
                 },
                 child: const ListTile(
                   title: Text(
-                    'About',
+                    'Aboutt',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
