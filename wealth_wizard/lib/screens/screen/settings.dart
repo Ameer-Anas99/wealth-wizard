@@ -37,7 +37,7 @@ class settings extends StatelessWidget {
                     builder: (context) => const TermsCondition(),
                   ));
                 },
-                child: ListTile(
+                child: const ListTile(
                   title: Text(
                     'Terms and Conditions',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
