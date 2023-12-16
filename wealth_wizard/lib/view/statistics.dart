@@ -1,10 +1,10 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/statistics/statistics_all.dart';
-import 'package:wealth_wizard/statistics/statistics_expence.dart';
-import 'package:wealth_wizard/statistics/statistics_income.dart';
+import 'package:wealth_wizard/view/statistics_all.dart';
+import 'package:wealth_wizard/view/statistics_expence.dart';
+import 'package:wealth_wizard/view/statistics_income.dart';
 
 ValueNotifier<List<TransactionModel>> overViewGraphNotifier =
     ValueNotifier(Dbprovider.instance.transactionListNotifier.value);

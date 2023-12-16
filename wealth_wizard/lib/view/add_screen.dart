@@ -1,31 +1,35 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:wealth_wizard/view/bottom_bar.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
+import 'package:wealth_wizard/view/balance.dart';
 
-class EditData extends StatefulWidget {
-  final String? id;
-  final TransactionModel obj;
-
-  const EditData({
-    super.key,
-    required this.obj,
-    this.id,
-  });
+class AddTransaction extends StatefulWidget {
+  File file;
+  AddTransaction({super.key, required this.file});
 
   @override
-  State<EditData> createState() => _EditTransactionState();
+  State<AddTransaction> createState() => _AddTransactionState();
 }
 
-class _EditTransactionState extends State<EditData> {
+class _AddTransactionState extends State<AddTransaction> {
   DateTime date = DateTime.now();
-  String? _selectedtype;
-  String? _selectedCategory;
 
-  int _value = 0;
-  TextEditingController _amountTextEditingController = TextEditingController();
-  TextEditingController _explainTextEditingController = TextEditingController();
+  String? selectedIN;
 
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController explainController = TextEditingController();
+
+  String? selctedItem;
+
+  FocusNode ex = FocusNode();
+
+  final TextEditingController amountcontroller = TextEditingController();
+
+  FocusNode amount = FocusNode();
 
   final List<String> _iteminex = ['income', 'expense'];
 
@@ -37,18 +41,9 @@ class _EditTransactionState extends State<EditData> {
     'Other'
   ];
 
-  @override
-  void initState() {
+  void initstate() {
     super.initState();
-
-    super.initState();
-    _value = int.parse(widget.obj.id);
-    _amountTextEditingController =
-        TextEditingController(text: widget.obj.amount);
-    _explainTextEditingController =
-        TextEditingController(text: widget.obj.explain);
-    _selectedtype = widget.obj.type;
-    _selectedCategory = widget.obj.category;
+    IncomeAndExpence().income();
   }
 
   @override
@@ -61,85 +56,75 @@ class _EditTransactionState extends State<EditData> {
         children: [
           backgroundContainer(context),
           SingleChildScrollView(
-            child: Container(
-              child: mainContainer(),
-            ),
+            child: mainContainer(),
           )
         ],
       )),
     );
   }
 
-  Container mainContainer() {
+  SingleChildScrollView mainContainer() {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.white),
-      height: size.height * 0.7,
-      width: size.width * 0.9,
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            type(),
-            const SizedBox(
-              height: 20,
-            ),
-            Category(),
-            const SizedBox(
-              height: 20,
-            ),
-            explain(),
-            const SizedBox(
-              height: 20,
-            ),
-            amount(),
-            const SizedBox(
-              height: 20,
-            ),
-            dateTime(),
-            const SizedBox(
-              height: 20,
-            ),
-            const Spacer(),
-            GestureDetector(
-              onTap: () {
-                if (_formKey.currentState!.validate()) {
-                  submitEditIncomeData();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                        backgroundColor: Color.fromARGB(255, 63, 173, 67),
-                        content: Center(
-                            child: Text('Transaction Edited Successfully'))),
-                  );
-                }
-              },
-              child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromARGB(255, 95, 13, 109),
-                ),
-                width: 120,
-                height: 50,
-                child: const Text(
-                  'Save',
-                  style: TextStyle(
-                    fontFamily: 'f',
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    fontSize: 17,
+    return SingleChildScrollView(
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20), color: Colors.white),
+        height: size.height * 0.8,
+        width: size.width * 0.9,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              type(),
+              const SizedBox(
+                height: 20,
+              ),
+              name(),
+              const SizedBox(
+                height: 20,
+              ),
+              explain(),
+              const SizedBox(
+                height: 20,
+              ),
+              transactionAmount(),
+              const SizedBox(
+                height: 20,
+              ),
+              dateTime(),
+              const SizedBox(
+                height: 27,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    addTransaction();
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: const Color.fromARGB(255, 95, 13, 109),
+                  ),
+                  width: 120,
+                  height: 50,
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontFamily: 'f',
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -147,29 +132,31 @@ class _EditTransactionState extends State<EditData> {
 
   Container dateTime() {
     return Container(
-      alignment: Alignment.bottomLeft,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(width: 2, color: Colors.grey)),
-      width: 300,
-      child: TextButton(
-        onPressed: () async {
-          DateTime? newDate = await showDatePicker(
-              context: context,
-              initialDate: widget.obj.datetime,
-              firstDate: DateTime(2020),
-              lastDate: DateTime(2100));
-          if (newDate == Null) return;
-          setState(() {
-            date = newDate!;
-          });
-        },
-        child: Text(
-          'Date : ${date.year}/${date.month}/${date.day}',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
-        ),
-      ),
-    );
+        alignment: Alignment.bottomLeft,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(width: 2, color: Colors.grey)),
+        width: 300,
+        child: TextButton(
+          onPressed: () async {
+            DateTime? newDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2020),
+                lastDate: DateTime(2100));
+            if (newDate == null) {
+              return;
+            } else {
+              setState(() {
+                date = newDate;
+              });
+            }
+          },
+          child: Text(
+            'Date : ${date.year}/${date.month}/${date.day}',
+            style: const TextStyle(fontSize: 16, color: Colors.black),
+          ),
+        ));
   }
 
   Padding type() {
@@ -179,54 +166,49 @@ class _EditTransactionState extends State<EditData> {
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 15),
           width: 300,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              width: 2,
-              color: Colors.grey,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 2,
+                color: Colors.grey,
+              )),
+          child: DropdownButtonFormField<String>(
+            value: selectedIN,
+            onChanged: ((value) {
+              setState(() {
+                selectedIN = value!;
+              });
+            }),
+            items: _iteminex
+                .map((e) => DropdownMenuItem(
+                      value: e,
+                      child: Row(
+                        children: [
+                          Text(
+                            e,
+                            style: const TextStyle(fontSize: 17),
+                          )
+                        ],
+                      ),
+                    ))
+                .toList(),
+            hint: const Text(
+              'Select',
+              style: TextStyle(color: Colors.grey),
             ),
-          ),
-          child: SingleChildScrollView(
-            child: DropdownButtonFormField<String>(
-              hint: Row(
-                children: [
-                  Container(
-                    width: 40,
-                    child: Image.asset('assets/${widget.obj.type}.jpeg'),
-                  ),
-                  Text('${widget.obj.type}',
-                      style: const TextStyle(color: Colors.black)),
-                ],
-              ),
-              value: _selectedtype,
-              onChanged: ((value) {
-                setState(() {
-                  _selectedtype = value!;
-                });
-              }),
-              items: _iteminex
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              e,
-                              style: const TextStyle(fontSize: 17),
-                            )
-                          ],
-                        ),
-                      ))
-                  .toList(),
-              dropdownColor: Colors.white,
-              isExpanded: true,
-            ),
+            dropdownColor: Colors.white,
+            isExpanded: true,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Select value";
+              } else {
+                return null;
+              }
+            },
           )),
     );
   }
 
-  Padding amount() {
+  Padding transactionAmount() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: SizedBox(
@@ -234,7 +216,11 @@ class _EditTransactionState extends State<EditData> {
         child: TextFormField(
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Required value';
+              return 'Select Amount';
+            } else if (value.contains(',')) {
+              return 'Please remove special character';
+            } else if (value.contains('.')) {
+              return 'Please remove special character';
             } else if (value.contains(' ')) {
               return 'Please remove spaces';
             } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
@@ -244,7 +230,8 @@ class _EditTransactionState extends State<EditData> {
             }
           },
           keyboardType: TextInputType.number,
-          controller: _amountTextEditingController,
+          focusNode: amount,
+          controller: amountcontroller,
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -272,18 +259,26 @@ class _EditTransactionState extends State<EditData> {
       child: SizedBox(
         width: 300,
         child: TextFormField(
-          validator: (values) {
-            if ((values == null || values.isEmpty)) {
-              return "Required Value";
-            } else if (values.contains(' ')) {
+          // validator: (value) {
+          //   if (value == null || value.isEmpty) {
+          //     return "Select explain";
+          //   } else {
+          //     return null;
+          //   }
+          // },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Select explain';
+            } else if (value.contains(' ')) {
               return 'Please remove spaces';
-            } else if (!RegExp(r'^[a-z]+$').hasMatch(values)) {
+            } else if (!RegExp(r'^[a-z]+$').hasMatch(value)) {
               return 'Please Enter a valid number';
             } else {
               return null;
             }
           },
-          controller: _explainTextEditingController,
+          focusNode: ex,
+          controller: explainController,
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -305,7 +300,7 @@ class _EditTransactionState extends State<EditData> {
     );
   }
 
-  Padding Category() {
+  Padding name() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
@@ -315,19 +310,14 @@ class _EditTransactionState extends State<EditData> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             width: 2,
-            color: const Color(0xffC5C5C5),
+            color: Color.fromARGB(255, 184, 182, 182),
           ),
         ),
         child: DropdownButtonFormField<String>(
-          hint: Row(
-            children: [
-              Text('${widget.obj.category} ',
-                  style: const TextStyle(color: Colors.black)),
-            ],
-          ),
+          value: selctedItem,
           onChanged: (value) {
             setState(() {
-              _selectedCategory = value!;
+              selctedItem = value!;
             });
           },
           items: _item
@@ -337,9 +327,9 @@ class _EditTransactionState extends State<EditData> {
                     alignment: Alignment.center,
                     child: Row(
                       children: [
-                        const SizedBox(
+                        SizedBox(
                           width: 40,
-                          // child: Image.asset('assets/$e.jpeg'),
+                          child: Image.asset('assets/$e.jpeg'),
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -374,6 +364,13 @@ class _EditTransactionState extends State<EditData> {
           ),
           dropdownColor: Colors.white,
           isExpanded: true,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Select Item";
+            } else {
+              return null;
+            }
+          },
         ),
       ),
     );
@@ -409,7 +406,7 @@ class _EditTransactionState extends State<EditData> {
                     ),
                     const Center(
                       child: Text(
-                        'Edit Transaction',
+                        'Add Transaction',
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w600,
@@ -430,19 +427,31 @@ class _EditTransactionState extends State<EditData> {
     );
   }
 
-  Future<void> submitEditIncomeData() async {
-    final _explainText = _explainTextEditingController.text;
-    final _amountText = _amountTextEditingController.text;
-
+  Future addTransaction() async {
     final model = TransactionModel(
-        type: _selectedtype!,
-        amount: _amountText,
+        type: selectedIN!,
+        amount: amountcontroller.text,
         datetime: date,
-        explain: _explainText,
-        category: _selectedCategory!,
-        id: widget.obj.id);
+        explain: explainController.text,
+        category: selctedItem!,
+        id: DateTime.now().microsecondsSinceEpoch.toString());
 
-    await Dbprovider.instance.editTransaction(model);
-    Navigator.of(context).pop();
+    await Dbprovider().insertTransaction(model);
+
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => BottomBar(username: "", file: widget.file),
+    ));
+    Dbprovider.instance.getAllTransactions();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Transaction Added Successfully',
+          textAlign: TextAlign.center,
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Color.fromARGB(255, 95, 13, 109),
+      ),
+    );
   }
 }

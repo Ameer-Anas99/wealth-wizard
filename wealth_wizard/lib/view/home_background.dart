@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wealth_wizard/utility/balance.dart';
+import 'package:wealth_wizard/view/balance.dart';
 
 // ignore: must_be_immutable
 class HomeBackground extends StatefulWidget {

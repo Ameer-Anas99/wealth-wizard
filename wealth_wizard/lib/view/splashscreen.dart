@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wealth_wizard/bottom/bottom_bar.dart';
+import 'package:wealth_wizard/view/bottom_bar.dart';
 import 'package:wealth_wizard/main.dart';
-import 'package:wealth_wizard/screens/widget/loginscreen.dart';
+import 'package:wealth_wizard/view/loginscreen.dart';
 
 class ScreenSplash extends StatefulWidget {
-  String file;
+  File file;
   ScreenSplash({super.key, required this.file});
 
   @override
@@ -57,7 +59,8 @@ class _ScreenSplashState extends State<ScreenSplash> {
       gotoLogin();
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (ctx) => BottomBar(username: "", file: widget.file),
+        builder: (ctx) => BottomBar(
+            username: "", file: File('wealth_wizard/assets/Education.jpeg')),
       ));
     }
   }

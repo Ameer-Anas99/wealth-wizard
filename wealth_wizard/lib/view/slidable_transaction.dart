@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/screens/widget/editdata.dart';
-import 'package:wealth_wizard/screens/widget/uppercase.dart';
+import 'package:wealth_wizard/view/editdata.dart';
+import 'package:wealth_wizard/view/uppercase.dart';
 
 class SlidableTransaction extends StatelessWidget {
   SlidableTransaction({super.key, required this.transaction});

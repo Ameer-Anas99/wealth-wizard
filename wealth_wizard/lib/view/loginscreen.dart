@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wealth_wizard/bottom/bottom_bar.dart';
+import 'package:wealth_wizard/view/bottom_bar.dart';
 import 'package:wealth_wizard/main.dart';
 
 final usernameController = TextEditingController();
@@ -143,6 +143,15 @@ class _ScreenLoginState extends State<ScreenLogin> {
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
                     checkLogin(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (ctx) => BottomBar(
+                          username: usernameController.text,
+                          file: File('wealth_wizard/assets/Education.jpeg'),
+                        ),
+                      ),
+                    );
                   }
                 },
                 child: Padding(
@@ -185,15 +194,6 @@ class _ScreenLoginState extends State<ScreenLogin> {
     }
     await sharedpref.setBool(saveKeyName, true);
     await sharedpref.setString('username', username);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (ctx) => BottomBar(
-          username: usernameController.text,
-          file: file!.path,
-        ),
-      ),
-    );
   }
 
   getcam() async {

@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:hive_flutter/adapters.dart';
 import 'package:flutter/material.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:provider/provider.dart';
+import 'package:wealth_wizard/controller/bottombar_provider.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/screens/widget/splashscreen.dart';
+import 'package:wealth_wizard/view/splashscreen.dart';
 
 const saveKeyName = 'User logged in';
 Future<void> main() async {
@@ -24,11 +28,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'wealth_wizard',
-      home: ScreenSplash(
-        file: '',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => BottonBarProvider(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'wealth_wizard',
+        home: ScreenSplash(
+          file: File('wealth_wizard/assets/Education.jpeg'),
+        ),
       ),
     );
   }

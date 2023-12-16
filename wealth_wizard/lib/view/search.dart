@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:wealth_wizard/function/db_function.dart';
-import 'package:wealth_wizard/transaction/transactions.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/view/transactions.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});

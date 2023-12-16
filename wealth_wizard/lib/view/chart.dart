@@ -1,5 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
 int totals = 0;

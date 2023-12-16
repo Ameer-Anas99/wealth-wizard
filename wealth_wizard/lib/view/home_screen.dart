@@ -1,17 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:wealth_wizard/function/db_function.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/screens/screen/home_background.dart';
-import 'package:wealth_wizard/screens/screen/transaction_list.dart';
-import 'package:wealth_wizard/screens/widget/uppercase.dart';
-import 'package:wealth_wizard/transaction/transactions.dart';
-import 'package:wealth_wizard/utility/balance.dart';
+import 'package:wealth_wizard/view/home_background.dart';
+import 'package:wealth_wizard/view/transaction_list.dart';
+import 'package:wealth_wizard/view/uppercase.dart';
+import 'package:wealth_wizard/view/transactions.dart';
+import 'package:wealth_wizard/view/balance.dart';
 
 final List<String> day = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
 class HomeScreen extends StatefulWidget {
   String username;
-  String file;
+  File file;
   HomeScreen({super.key, required this.username, required this.file});
 
   @override
@@ -47,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: screenWidth,
                       child: HomeBackground(
                         username: widget.username,
-                        file: widget.file,
+                        file: widget.file.path,
                       )),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
