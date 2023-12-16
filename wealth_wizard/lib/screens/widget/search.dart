@@ -38,7 +38,7 @@ class _SearchFieldState extends State<SearchField> {
                 suffixIcon: IconButton(
                     onPressed: () {
                       overViewListNotifier.value =
-                          TransactionDB.instance.transactionListNotifier.value;
+                          Dbprovider.instance.transactionListNotifier.value;
                       searchQueryController.clear();
                     },
                     icon: const Icon(
@@ -53,7 +53,7 @@ class _SearchFieldState extends State<SearchField> {
   searchResult(String query) {
     if (query.isEmpty || query == '') {
       overViewListNotifier.value =
-          TransactionDB.instance.transactionListNotifier.value;
+          Dbprovider.instance.transactionListNotifier.value;
     } else {
       overViewListNotifier.value = overViewListNotifier.value
           .where((element) =>

@@ -442,7 +442,7 @@ class _EditTransactionState extends State<EditData> {
         category: _selectedCategory!,
         id: widget.obj.id);
 
-    await TransactionDB.instance.editTransaction(model);
+    await Dbprovider.instance.editTransaction(model);
     Navigator.of(context).pop();
   }
 }

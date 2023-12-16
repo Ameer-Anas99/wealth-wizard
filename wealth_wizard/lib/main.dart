@@ -16,7 +16,7 @@ Future<void> main() async {
   await Hive.openBox<TransactionModel>(transactionDBName);
 
   runApp(const MyApp());
-  TransactionDB().getAllTransactions();
+  Dbprovider().getAllTransactions();
 }
 
 class MyApp extends StatelessWidget {

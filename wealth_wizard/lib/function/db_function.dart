@@ -5,12 +5,12 @@ import 'package:wealth_wizard/transaction/transactions.dart';
 
 const transactionDBName = 'Transaction_database';
 
-class TransactionDB extends ChangeNotifier {
-  TransactionDB.internal();
+class Dbprovider extends ChangeNotifier {
+  Dbprovider.internal();
 
-  static TransactionDB instance = TransactionDB.internal();
+  static Dbprovider instance = Dbprovider.internal();
 
-  factory TransactionDB() {
+  factory Dbprovider() {
     return instance;
   }
   ValueNotifier<List<TransactionModel>> transactionListNotifier =

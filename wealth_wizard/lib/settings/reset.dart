@@ -22,8 +22,8 @@ class reset extends ChangeNotifier {
                   final transactionDb =
                       await Hive.openBox<TransactionModel>(transactionDBName);
                   transactionDb.clear();
-                  TransactionDB().transactionListNotifier.value.clear();
-                  TransactionDB().transactionListNotifier.notifyListeners();
+                  Dbprovider().transactionListNotifier.value.clear();
+                  Dbprovider().transactionListNotifier.notifyListeners();
 
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(

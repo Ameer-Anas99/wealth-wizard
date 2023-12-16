@@ -22,9 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     overViewListNotifier.value =
-        TransactionDB.instance.transactionListNotifier.value;
+        Dbprovider.instance.transactionListNotifier.value;
     super.initState();
-    TransactionDB().transactionListNotifier;
+    Dbprovider().transactionListNotifier;
     setState(() {});
   }
 
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       home: Scaffold(
           body: SafeArea(
         child: ValueListenableBuilder(
-            valueListenable: TransactionDB.instance.transactionListNotifier,
+            valueListenable: Dbprovider.instance.transactionListNotifier,
             builder: (context, value, index) {
               return Column(
                 children: [
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 300,
                       child: ValueListenableBuilder(
                           valueListenable:
-                              TransactionDB.instance.transactionListNotifier,
+                              Dbprovider.instance.transactionListNotifier,
                           builder: (BuildContext ctx,
                               List<TransactionModel> newList, Widget? _) {
                             return (newList.isEmpty)

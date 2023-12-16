@@ -5,7 +5,7 @@ import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/utility/balance.dart';
 
 ValueNotifier<List<TransactionModel>> overViewGraphNotifier =
-    ValueNotifier(TransactionDB.instance.transactionListNotifier.value);
+    ValueNotifier(Dbprovider.instance.transactionListNotifier.value);
 
 class AllScreen extends StatefulWidget {
   const AllScreen({super.key});

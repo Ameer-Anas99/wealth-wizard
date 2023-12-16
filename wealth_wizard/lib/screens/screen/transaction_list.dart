@@ -18,7 +18,7 @@ class _TransactionListState extends State<TransactionList> {
   @override
   void initState() {
     overViewListNotifier.value =
-        TransactionDB.instance.transactionListNotifier.value;
+        Dbprovider.instance.transactionListNotifier.value;
     super.initState();
   }
 

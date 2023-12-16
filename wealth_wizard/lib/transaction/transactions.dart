@@ -5,7 +5,7 @@ import 'package:wealth_wizard/screens/screen/slidable_transaction.dart';
 import 'package:wealth_wizard/screens/screen/transaction_list.dart';
 
 ValueNotifier<List<TransactionModel>> overViewListNotifier =
-    ValueNotifier(TransactionDB.instance.transactionListNotifier.value);
+    ValueNotifier(Dbprovider.instance.transactionListNotifier.value);
 
 class Transactions extends StatelessWidget {
   const Transactions({super.key});
@@ -14,7 +14,7 @@ class Transactions extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double screenHeight = size.height;
-    TransactionDB().getAllTransactions();
+    Dbprovider().getAllTransactions();
     return ValueListenableBuilder(
         valueListenable: overViewListNotifier,
         builder: (BuildContext context, newList, Widget? _) {

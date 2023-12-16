@@ -7,7 +7,7 @@ import 'package:wealth_wizard/statistics/statistics_expence.dart';
 import 'package:wealth_wizard/statistics/statistics_income.dart';
 
 ValueNotifier<List<TransactionModel>> overViewGraphNotifier =
-    ValueNotifier(TransactionDB.instance.transactionListNotifier.value);
+    ValueNotifier(Dbprovider.instance.transactionListNotifier.value);
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
@@ -23,7 +23,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   void initState() {
     super.initState();
     overViewGraphNotifier.value =
-        TransactionDB.instance.transactionListNotifier.value;
+        Dbprovider.instance.transactionListNotifier.value;
   }
 
   @override
@@ -82,8 +82,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         "All",
                       ),
                       onTap: () {
-                        overViewGraphNotifier.value = TransactionDB
-                            .instance.transactionListNotifier.value;
+                        overViewGraphNotifier.value =
+                            Dbprovider.instance.transactionListNotifier.value;
                         setState(() {
                           dateFilterTitle = 'All';
                         });
@@ -95,8 +95,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         "Today",
                       ),
                       onTap: () {
-                        overViewGraphNotifier.value = TransactionDB
-                            .instance.transactionListNotifier.value;
+                        overViewGraphNotifier.value =
+                            Dbprovider.instance.transactionListNotifier.value;
                         overViewGraphNotifier.value = overViewGraphNotifier
                             .value
                             .where((element) =>
@@ -116,7 +116,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         "Yesterday",
                       ),
                       onTap: () {
-                        overViewGraphNotifier.value = TransactionDB
+                        overViewGraphNotifier.value = Dbprovider
                             .instance.transactionListNotifier.value
                             .where((element) =>
                                 element.datetime.day ==
@@ -136,8 +136,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         "Month",
                       ),
                       onTap: () {
-                        overViewGraphNotifier.value = TransactionDB
-                            .instance.transactionListNotifier.value;
+                        overViewGraphNotifier.value =
+                            Dbprovider.instance.transactionListNotifier.value;
                         overViewGraphNotifier.value = overViewGraphNotifier
                             .value
                             .where((element) =>

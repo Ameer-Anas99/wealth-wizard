@@ -434,12 +434,12 @@ class _AddTransactionState extends State<AddTransaction> {
         category: selctedItem!,
         id: DateTime.now().microsecondsSinceEpoch.toString());
 
-    await TransactionDB().insertTransaction(model);
+    await Dbprovider().insertTransaction(model);
 
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (context) => BottomBar(username: "", file: widget.file),
     ));
-    TransactionDB.instance.getAllTransactions();
+    Dbprovider.instance.getAllTransactions();
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
