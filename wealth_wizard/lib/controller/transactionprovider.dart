@@ -20,6 +20,14 @@ class TransactionProvider extends ChangeNotifier {
 
   FocusNode amount = FocusNode();
 
+  DateTime? selectedEditDateTime;
+
+  String? selectedEdittype;
+
+  String? selectedEditCategory;
+  TextEditingController amountTextEditingController = TextEditingController();
+  TextEditingController explainTextEditingController = TextEditingController();
+
   final List<String> iteminex = ['income', 'expense'];
 
   final List<String> item = [
