@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/balance.dart';
+import 'package:wealth_wizard/balance.dart';
 
 ValueNotifier<List<TransactionModel>> overViewGraphNotifier =
     ValueNotifier(Dbprovider.instance.transactionListNotifier.value);

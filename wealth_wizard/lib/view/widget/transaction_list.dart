@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
-import 'package:wealth_wizard/view/search.dart';
+import 'package:wealth_wizard/view/widget/search.dart';
 import 'package:wealth_wizard/view/transactions.dart';
 
 ValueNotifier showCategory = ValueNotifier('All');

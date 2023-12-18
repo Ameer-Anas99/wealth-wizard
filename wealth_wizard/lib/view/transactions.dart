@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/slidable_transaction.dart';
-import 'package:wealth_wizard/view/transaction_list.dart';
+import 'package:wealth_wizard/view/widget/slidable_transaction.dart';
+import 'package:wealth_wizard/view/widget/transaction_list.dart';
 
 ValueNotifier<List<TransactionModel>> overViewListNotifier =
     ValueNotifier(Dbprovider.instance.transactionListNotifier.value);

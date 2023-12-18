@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wealth_wizard/view/balance.dart';
+import 'package:wealth_wizard/balance.dart';
 
 // ignore: must_be_immutable
 class HomeBackground extends StatefulWidget {
@@ -119,7 +119,6 @@ class _HomeBackgroundState extends State<HomeBackground> {
                     child: Text('Total Balance',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 19,
                           color: Colors.white,
                         )),
                   ),

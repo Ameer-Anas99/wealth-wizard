@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wealth_wizard/view/about.dart';
+import 'package:wealth_wizard/view/settings/widget/about.dart';
 //import 'package:wealth_wizard/settings/privacy_policy.dart';
-import 'package:wealth_wizard/view/reset.dart';
-import 'package:wealth_wizard/view/terms_condition.dart';
+import 'package:wealth_wizard/reset.dart';
+import 'package:wealth_wizard/view/settings/widget/terms_condition.dart';
 
 class settings extends StatelessWidget {
   const settings({super.key});

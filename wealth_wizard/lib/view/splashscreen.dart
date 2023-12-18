@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wealth_wizard/view/bottom_bar.dart';
+import 'package:wealth_wizard/view/widget/bottom_bar.dart';
 import 'package:wealth_wizard/main.dart';
-import 'package:wealth_wizard/view/loginscreen.dart';
+import 'package:wealth_wizard/view/intro/loginscreen.dart';
 
 class ScreenSplash extends StatefulWidget {
   File file;

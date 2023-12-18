@@ -3,7 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/loginscreen.dart';
+import 'package:wealth_wizard/view/intro/loginscreen.dart';
 
 class reset extends ChangeNotifier {
   resetApp(BuildContext context) {

@@ -6,47 +6,45 @@ import 'package:wealth_wizard/view/transactions.dart';
 const transactionDBName = 'Transaction_database';
 
 class Dbprovider extends ChangeNotifier {
-  Dbprovider.internal();
-
-  static Dbprovider instance = Dbprovider.internal();
-
-  factory Dbprovider() {
-    return instance;
-  }
-  ValueNotifier<List<TransactionModel>> transactionListNotifier =
-      ValueNotifier([]);
+  List<TransactionModel> transactionListNotifier = [];
+  List chartList = [];
 
   Future<void> getAllTransactions() async {
     final transactionDB =
         await Hive.openBox<TransactionModel>(transactionDBName);
-    transactionListNotifier.value.clear();
+    transactionListNotifier.clear();
 
-    transactionListNotifier.value.addAll(transactionDB.values);
+    transactionListNotifier.addAll(transactionDB.values);
 
-    transactionListNotifier.notifyListeners();
+    notifyListeners();
   }
 
   Future<void> insertTransaction(TransactionModel obj) async {
     final transactionDB =
         await Hive.openBox<TransactionModel>(transactionDBName);
     transactionDB.put(obj.id, obj);
-    overViewListNotifier.notifyListeners();
     getAllTransactions();
+    notifyListeners();
   }
 
   Future<void> deleteTransaction(TransactionModel transactionModel) async {
     final transactionDB =
         await Hive.openBox<TransactionModel>(transactionDBName);
     transactionDB.delete(transactionModel.id);
-    overViewListNotifier.notifyListeners();
     getAllTransactions();
+    notifyListeners();
   }
 
   Future<void> editTransaction(TransactionModel value) async {
     final transactionDB =
         await Hive.openBox<TransactionModel>(transactionDBName);
     transactionDB.put(value.id, value);
-    overViewListNotifier.notifyListeners();
     getAllTransactions();
+    notifyListeners();
+
+    void allDbList() {
+      chartList = transactionListNotifier;
+      notifyListeners();
+    }
   }
 }

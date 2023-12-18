@@ -3,13 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/home_background.dart';
-import 'package:wealth_wizard/view/transaction_list.dart';
+import 'package:wealth_wizard/view/home/widget/home_background.dart';
+import 'package:wealth_wizard/view/widget/transaction_list.dart';
 import 'package:wealth_wizard/view/uppercase.dart';
 import 'package:wealth_wizard/view/transactions.dart';
-import 'package:wealth_wizard/view/balance.dart';
-
-final List<String> day = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+import 'package:wealth_wizard/balance.dart';
 
 class HomeScreen extends StatefulWidget {
   String username;
