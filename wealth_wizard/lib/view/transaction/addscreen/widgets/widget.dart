@@ -90,7 +90,7 @@ Padding transactionAmount() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Consumer<TransactionProvider>(builder: (context, provider, child) {
-      SizedBox(
+      return SizedBox(
         width: 300,
         child: TextFormField(
           validator: (value) {
