@@ -37,6 +37,8 @@ class TransactionProvider extends ChangeNotifier {
     'Education',
     'Other'
   ];
+
+  get obj => null;
   void selectedDate(DateTime? newDate) {
     if (newDate != null) {
       date = newDate;
