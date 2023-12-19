@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TransactionProvider extends ChangeNotifier {
   TextEditingController searchQueryController = TextEditingController();
@@ -54,5 +55,21 @@ class TransactionProvider extends ChangeNotifier {
   void selectedItem(String value) {
     selctedItem = value;
     notifyListeners();
+  }
+
+  searchResult(BuildContext context, String query) {
+    final dbprovider = Provider.of(context,listen: false);
+    if (query.isEmpty || query == '') {
+      debugPrint(query);
+      dbprovider.
+    } else {
+      overViewListNotifier.value = overViewListNotifier.value
+          .where((element) =>
+              element.category
+                  .toLowerCase()
+                  .contains(query.trim().toLowerCase()) ||
+              element.explain.contains(query.trim().toLowerCase()))
+          .toList();
+    }
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:wealth_wizard/controller/db_function.dart';
-import 'package:wealth_wizard/controller/transactionprovider.dart';
+import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/view/transactions.dart';
 
 class SearchField extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SearchFieldState extends State<SearchField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Consumer<TransactionProvider>(
-        builder: (context, Provider, child) {
+        builder: (context, provider, child) {
           return Card(
             elevation: 9,
             shape: RoundedRectangleBorder(
@@ -27,7 +27,7 @@ class _SearchFieldState extends State<SearchField> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
-                controller: Provider.searchQueryController,
+                controller: provider.searchQueryController,
                 onChanged: (query) {
                   searchResult(query);
                 },
@@ -52,20 +52,5 @@ class _SearchFieldState extends State<SearchField> {
         },
       ),
     );
-  }
-
-  searchResult(String query) {
-    if (query.isEmpty || query == '') {
-      overViewListNotifier.value =
-          Dbprovider.instance.transactionListNotifier.value;
-    } else {
-      overViewListNotifier.value = overViewListNotifier.value
-          .where((element) =>
-              element.category
-                  .toLowerCase()
-                  .contains(query.trim().toLowerCase()) ||
-              element.explain.contains(query.trim().toLowerCase()))
-          .toList();
-    }
   }
 }

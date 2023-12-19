@@ -6,15 +6,18 @@ import 'package:wealth_wizard/view/transactions.dart';
 const transactionDBName = 'Transaction_database';
 
 class Dbprovider extends ChangeNotifier {
-  List<TransactionModel> transactionListNotifier = [];
-  List chartList = [];
+  // List<TransactionModel> transactionListNotifier = [];
+  List<TransactionModel> chartList = [];
+  List<TransactionModel> transactionList = [];
 
   Future<void> getAllTransactions() async {
     final transactionDB =
         await Hive.openBox<TransactionModel>(transactionDBName);
-    transactionListNotifier.clear();
+    // transactionListNotifier.clear();
 
-    transactionListNotifier.addAll(transactionDB.values);
+    // transactionListNotifier.addAll(transactionDB.values);
+    transactionList.clear();
+    transactionList.addAll(transactionDB.values);
 
     notifyListeners();
   }
@@ -43,7 +46,7 @@ class Dbprovider extends ChangeNotifier {
     notifyListeners();
 
     void allDbList() {
-      chartList = transactionListNotifier;
+      chartList = transactionList;
       notifyListeners();
     }
   }

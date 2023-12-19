@@ -17,8 +17,6 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-  String dateFilterTitle = 'All';
-
   @override
   void initState() {
     super.initState();
