@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
-import 'package:wealth_wizard/controller/transactionprovider.dart';
+import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
 class EditData extends StatefulWidget {

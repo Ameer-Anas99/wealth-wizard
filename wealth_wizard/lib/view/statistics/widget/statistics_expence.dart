@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/view/statistics/statistics.dart';
 
@@ -16,14 +18,13 @@ class _ExpenceChartState extends State<ExpenceChart> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,
-      body: ValueListenableBuilder(
-        valueListenable: overViewGraphNotifier,
-        builder: (BuildContext context, List<TransactionModel> newList,
-            Widget? child) {
-          var allincome =
-              newList.where((element) => element.type == 'expense').toList();
-          return overViewGraphNotifier.value.isEmpty
-              ? SingleChildScrollView(
+      body: Consumer<Dbprovider>(
+        builder: (context, transactionprovider, child) {
+          var allincome = transactionprovider.chartList
+              .where((element) => element.type == 'expense')
+              .toList();
+          return transactionprovider.chartList.isEmpty
+              ? const SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

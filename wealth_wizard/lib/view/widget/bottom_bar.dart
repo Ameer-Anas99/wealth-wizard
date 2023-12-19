@@ -6,7 +6,7 @@ import 'package:wealth_wizard/controller/bottombar_provider.dart';
 import 'package:wealth_wizard/view/home/home_screen.dart';
 import 'package:wealth_wizard/view/settings/settings.dart';
 import 'package:wealth_wizard/view/statistics/statistics.dart';
-import 'package:wealth_wizard/view/widget/transaction_list.dart';
+import 'package:wealth_wizard/view/transaction/transaction_list.dart';
 import 'package:wealth_wizard/view/transaction/addscreen/add_screen.dart';
 
 // ignore: must_be_immutable
