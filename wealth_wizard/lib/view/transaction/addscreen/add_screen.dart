@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/transactionprovider.dart';
-import 'package:wealth_wizard/view/transaction/addscreen/widgets/widget.dart';
+import 'package:wealth_wizard/view/transaction/addscreen/widgets/addwidget.dart';
 import 'package:wealth_wizard/view/widget/bottom_bar.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
