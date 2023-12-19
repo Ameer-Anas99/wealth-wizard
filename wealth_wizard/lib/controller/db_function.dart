@@ -44,10 +44,10 @@ class Dbprovider extends ChangeNotifier {
     transactionDB.put(value.id, value);
     getAllTransactions();
     notifyListeners();
+  }
 
-    void allDbList() {
-      chartList = transactionList;
-      notifyListeners();
-    }
+  void allDbList() {
+    chartList = transactionList;
+    notifyListeners();
   }
 }

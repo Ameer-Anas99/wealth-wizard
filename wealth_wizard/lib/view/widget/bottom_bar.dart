@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/bottombar_provider.dart';
 import 'package:wealth_wizard/view/home/home_screen.dart';
 import 'package:wealth_wizard/view/settings/settings.dart';
-import 'package:wealth_wizard/view/statistics/statistics.dart';
-import 'package:wealth_wizard/view/transaction/transaction_list.dart';
+import 'package:wealth_wizard/view/statistics/statistics_screen.dart';
+import 'package:wealth_wizard/view/transaction/editscreen/transaction_list.dart';
 import 'package:wealth_wizard/view/transaction/addscreen/add_screen.dart';
 
 // ignore: must_be_immutable
@@ -28,7 +28,7 @@ class _BottomBarState extends State<BottomBar> {
     screen = [
       HomeScreen(username: widget.username, file: widget.file),
       const StatisticsScreen(),
-      const TransactionList(),
+      const TransactionScreen(),
       const settings(),
     ];
   }

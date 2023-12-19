@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
-import 'package:wealth_wizard/view/transactions.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -29,7 +26,7 @@ class _SearchFieldState extends State<SearchField> {
               child: TextField(
                 controller: provider.searchQueryController,
                 onChanged: (query) {
-                  searchResult(query);
+                  provider.addToQueryList(query);
                 },
                 decoration: InputDecoration(
                     hintText: 'Search..',
@@ -39,9 +36,13 @@ class _SearchFieldState extends State<SearchField> {
                     ),
                     suffixIcon: IconButton(
                         onPressed: () {
-                          overViewListNotifier.value =
-                              Dbprovider.instance.transactionListNotifier.value;
-                          Provider.searchQueryController.clear();
+                          // overViewListNotifier.value =
+                          //     Dbprovider.instance.transactionListNotifier.value;
+                          // Provider.searchQueryController.clear();
+                          provider.queryval = '';
+                          provider.searchQueryController.clear();
+                          provider.addToQueryList('');
+                          FocusManager.instance.primaryFocus?.unfocus();
                         },
                         icon: const Icon(
                           Icons.close,

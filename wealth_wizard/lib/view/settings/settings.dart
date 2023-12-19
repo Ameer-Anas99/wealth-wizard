@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wealth_wizard/controller/settingsprovider.dart';
 import 'package:wealth_wizard/view/settings/widget/about.dart';
-//import 'package:wealth_wizard/settings/privacy_policy.dart';
-import 'package:wealth_wizard/reset.dart';
 import 'package:wealth_wizard/view/settings/widget/terms_condition.dart';
 
 class settings extends StatelessWidget {
@@ -65,7 +65,7 @@ class settings extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  reset().resetApp(context);
+                  Provider.of<Reset>(context).resetApp(context);
                 },
                 child: const ListTile(
                   title: Text(

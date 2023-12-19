@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/bottombar_provider.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/splashscreen.dart';
+import 'package:wealth_wizard/view/widget/splashscreen.dart';
 
 const saveKeyName = 'User logged in';
 Future<void> main() async {

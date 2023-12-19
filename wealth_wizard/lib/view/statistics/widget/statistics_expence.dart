@@ -3,16 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/statistics/statistics.dart';
 
-class ExpenceChart extends StatefulWidget {
+class ExpenceChart extends StatelessWidget {
   const ExpenceChart({super.key});
 
-  @override
-  State<ExpenceChart> createState() => _ExpenceChartState();
-}
-
-class _ExpenceChartState extends State<ExpenceChart> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

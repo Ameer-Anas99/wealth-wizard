@@ -4,7 +4,6 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/statistics/statistics.dart';
 
 class IncomeChart extends StatefulWidget {
   const IncomeChart({super.key});
