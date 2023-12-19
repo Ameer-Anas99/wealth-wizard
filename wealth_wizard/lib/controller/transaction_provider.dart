@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wealth_wizard/controller/db_function.dart';
 
 class TransactionProvider extends ChangeNotifier {
   TextEditingController searchQueryController = TextEditingController();
@@ -58,12 +59,13 @@ class TransactionProvider extends ChangeNotifier {
   }
 
   searchResult(BuildContext context, String query) {
-    final dbprovider = Provider.of(context,listen: false);
+    final dbprovider = Provider.of<Dbprovider>(context, listen: false);
     if (query.isEmpty || query == '') {
       debugPrint(query);
-      dbprovider.
+      dbprovider.transactionList = dbprovider.chartList;
     } else {
-      overViewListNotifier.value = overViewListNotifier.value
+      // overViewListNotifier.value = overViewListNotifier.value
+      dbprovider.transactionList = dbprovider.chartList
           .where((element) =>
               element.category
                   .toLowerCase()
