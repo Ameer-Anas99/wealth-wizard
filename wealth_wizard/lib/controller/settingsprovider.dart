@@ -5,7 +5,7 @@ import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/view/intro/loginscreen.dart';
 
-class reset extends ChangeNotifier {
+class Reset extends ChangeNotifier {
   resetApp(BuildContext context) {
     showDialog(
         context: context,

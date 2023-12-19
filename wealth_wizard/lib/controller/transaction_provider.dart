@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/model/add_data.dart';
 
 class TransactionProvider extends ChangeNotifier {
   TextEditingController searchQueryController = TextEditingController();
@@ -73,5 +74,27 @@ class TransactionProvider extends ChangeNotifier {
               element.explain.contains(query.trim().toLowerCase()))
           .toList();
     }
+  }
+
+  List<TransactionModel> taskModelList = <TransactionModel>[];
+
+  List queryResultList = [];
+  String queryval = '';
+  addToQueryList(String query) async {
+    queryResultList.clear();
+
+    if (query.isEmpty || query == '') {
+      queryResultList.clear();
+    } else {
+      for (var element in taskModelList) {
+        if (element.explain
+            .trim()
+            .toLowerCase()
+            .contains(query.trim().toLowerCase())) {
+          queryResultList.add(element.explain);
+        }
+      }
+    }
+    notifyListeners();
   }
 }
