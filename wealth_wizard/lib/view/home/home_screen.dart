@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/controller/utility_provider.dart';
-import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/view/home/widget/home_background.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/transaction_all.dart';
 import 'package:wealth_wizard/view/uppercase.dart';
@@ -98,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 elevation: 0,
                                 child: Consumer<TransactionProvider>(
                                     builder: (context, provider, child) {
-                                  ListTile(
+                                  return ListTile(
                                     leading: CircleAvatar(
                                       backgroundColor: const Color.fromARGB(
                                           255, 244, 240, 228),
@@ -140,7 +138,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 thickness: 2,
                               );
                             },
-                            itemCount: newList.length > 4 ? 4 : newList.length,
+                            itemCount: provider.transactionList.length > 4
+                                ? 4
+                                : provider.transactionList.length,
                           );
                   }),
                 ),

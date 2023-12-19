@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wealth_wizard/balance.dart';
+import 'package:wealth_wizard/controller/utility_provider.dart';
 
 // ignore: must_be_immutable
 class HomeBackground extends StatefulWidget {
@@ -125,7 +125,7 @@ class _HomeBackgroundState extends State<HomeBackground> {
                   const SizedBox(height: 7),
                   Padding(
                     padding: const EdgeInsets.only(left: 15),
-                    child: Text('₹ ${IncomeAndExpence().total()}',
+                    child: Text('₹ ${UtilityProvider().total()}',
                         style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 19,
@@ -189,13 +189,13 @@ class _HomeBackgroundState extends State<HomeBackground> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('₹ ${IncomeAndExpence().income()}',
+                        Text('₹ ${UtilityProvider().income()}',
                             style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 19,
                                 color: Color.fromARGB(255, 71, 192, 75))),
                         Text(
-                          '₹ ${IncomeAndExpence().expense()}',
+                          '₹ ${UtilityProvider().expense()}',
                           style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 19,
