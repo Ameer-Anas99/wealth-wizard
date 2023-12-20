@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wealth_wizard/controller/utility_provider.dart';
 
+// ignore: must_be_immutable
 class HomeBackground extends StatefulWidget {
   String username;
   String file;
