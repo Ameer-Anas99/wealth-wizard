@@ -65,7 +65,7 @@ class settings extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Provider.of<Reset>(context).resetApp(context);
+                  Provider.of<Reset>(context, listen: false).resetApp(context);
                 },
                 child: const ListTile(
                   title: Text(

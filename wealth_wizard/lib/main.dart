@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/bottombar_provider.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/loginpage_provider.dart';
+import 'package:wealth_wizard/controller/settingsprovider.dart';
+import 'package:wealth_wizard/controller/statistics_provider.dart';
+import 'package:wealth_wizard/controller/transaction_provider.dart';
+import 'package:wealth_wizard/controller/utility_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/view/widget/splashscreen.dart';
 
@@ -20,7 +25,7 @@ Future<void> main() async {
   await Hive.openBox<TransactionModel>(transactionDBName);
 
   runApp(const MyApp());
-  Dbprovider().getAllTransactions();
+  Dbprovider().getAllData();
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +37,25 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => BottonBarProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Dbprovider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Reset(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => StatisticsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UtilityProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LogingPageProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

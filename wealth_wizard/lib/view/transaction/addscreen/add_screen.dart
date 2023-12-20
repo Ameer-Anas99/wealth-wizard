@@ -30,84 +30,87 @@ class _AddTransactionState extends State<AddTransaction> {
       body: SafeArea(
           child: Stack(
         alignment: AlignmentDirectional.center,
-        children: [
-          backgroundContainer(context),
-          SingleChildScrollView(
-            child: mainContainer(),
-          )
-        ],
+        children: [backgroundContainer(context), mainContainer()],
       )),
     );
   }
 
   Container mainContainer() {
     final Size size = MediaQuery.of(context).size;
-    final provider = Provider.of<TransactionProvider>(context);
+    final provider = Provider.of<TransactionProvider>(context, listen: false);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), color: Colors.white),
-      height: size.height * 0.8,
+      height: size.height * 0.7,
       width: size.width * 0.9,
       child: Form(
         key: provider.formKey,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            type(),
-            const SizedBox(
-              height: 20,
-            ),
-            name(),
-            const SizedBox(
-              height: 20,
-            ),
-            explain(),
-            const SizedBox(
-              height: 20,
-            ),
-            transactionAmount(),
-            const SizedBox(
-              height: 20,
-            ),
-            dateTime(),
-            const SizedBox(
-              height: 27,
-            ),
-            GestureDetector(
-              onTap: () {
-                if (provider.formKey.currentState!.validate()) {
-                  addTransaction();
-                }
-              },
-              child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromARGB(255, 95, 13, 109),
-                ),
-                width: 120,
-                height: 50,
-                child: const Text(
-                  'Save',
-                  style: TextStyle(
-                    fontFamily: 'f',
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    fontSize: 17,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              type(),
+              const SizedBox(
+                height: 20,
+              ),
+              name(),
+              const SizedBox(
+                height: 20,
+              ),
+              explain(),
+              const SizedBox(
+                height: 20,
+              ),
+              transactionAmount(),
+              const SizedBox(
+                height: 20,
+              ),
+              dateTime(),
+              const SizedBox(
+                height: 27,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (provider.formKey.currentState!.validate()) {
+                    addTransaction();
+
+                    provider.amountcontroller.clear();
+                    provider.explainController.clear();
+                    provider.selectedIN = null;
+                    provider.selctedItem = null;
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: const Color.fromARGB(255, 95, 13, 109),
+                  ),
+                  width: 120,
+                  height: 50,
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontFamily: 'f',
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: 17,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Future addTransaction() async {
-    final transactionprovider = Provider.of<TransactionProvider>(context);
+    final transactionprovider =
+        Provider.of<TransactionProvider>(context, listen: false);
     final dbprovider = Provider.of<Dbprovider>(context, listen: false);
     final model = TransactionModel(
         type: transactionprovider.selectedIN!,
@@ -122,7 +125,7 @@ class _AddTransactionState extends State<AddTransaction> {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (context) => BottomBar(username: "", file: widget.file),
     ));
-    dbprovider.getAllTransactions();
+    dbprovider.getAllData();
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(

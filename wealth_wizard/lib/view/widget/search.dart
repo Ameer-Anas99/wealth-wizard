@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 
-class SearchField extends StatefulWidget {
+class SearchField extends StatelessWidget {
   const SearchField({super.key});
 
-  @override
-  State<SearchField> createState() => _SearchFieldState();
-}
-
-class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return Padding(

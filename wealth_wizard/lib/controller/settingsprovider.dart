@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
-import 'package:wealth_wizard/view/intro/loginscreen.dart';
+import 'package:wealth_wizard/view/login/loginscreen.dart';
 
 class Reset extends ChangeNotifier {
   resetApp(BuildContext context) {
@@ -11,7 +11,7 @@ class Reset extends ChangeNotifier {
         context: context,
         builder: (ctx) {
           return AlertDialog(
-            content: Text(
+            content: const Text(
               'Do you want to Reset app',
               style: TextStyle(color: Colors.black, fontSize: 18),
             ),
@@ -27,7 +27,7 @@ class Reset extends ChangeNotifier {
                   clearSharedPreferences();
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => ScreenLogin(),
+                      builder: (context) => const ScreenLogin(),
                     ),
                   );
 
@@ -35,7 +35,7 @@ class Reset extends ChangeNotifier {
                       await SharedPreferences.getInstance();
                   await prefe.clear();
                 }),
-                child: Text(
+                child: const Text(
                   'Yes',
                   style: TextStyle(
                     color: Colors.red,
@@ -46,7 +46,7 @@ class Reset extends ChangeNotifier {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
+                  child: const Text(
                     'No',
                     style: TextStyle(color: Colors.green),
                   ))

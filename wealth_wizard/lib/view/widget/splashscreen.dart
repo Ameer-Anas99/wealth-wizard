@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wealth_wizard/view/login/loginscreen.dart';
 import 'package:wealth_wizard/view/widget/bottom_bar.dart';
 import 'package:wealth_wizard/main.dart';
-import 'package:wealth_wizard/view/intro/loginscreen.dart';
 
 class ScreenSplash extends StatefulWidget {
-  File file;
-  ScreenSplash({super.key, required this.file});
+  final File file;
+  const ScreenSplash({super.key, required this.file});
 
   @override
   State<ScreenSplash> createState() => _ScreenSplashState();

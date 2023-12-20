@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wealth_wizard/controller/db_function.dart';
-import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
-class IncomeChart extends StatefulWidget {
+class IncomeChart extends StatelessWidget {
   const IncomeChart({super.key});
 
-  @override
-  State<IncomeChart> createState() => _IncomeScreenState();
-}
-
-class _IncomeScreenState extends State<IncomeChart> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

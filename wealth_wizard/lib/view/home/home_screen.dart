@@ -9,9 +9,9 @@ import 'package:wealth_wizard/view/transaction/editscreen/widget/transaction_all
 import 'package:wealth_wizard/view/uppercase.dart';
 
 class HomeScreen extends StatefulWidget {
-  String username;
-  File file;
-  HomeScreen({super.key, required this.username, required this.file});
+  final String username;
+  final File file;
+  const HomeScreen({super.key, required this.username, required this.file});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     final provider = Provider.of<Dbprovider>(context, listen: false);
-    provider.getAllTransactions();
+    provider.getAllData();
   }
 
   @override

@@ -1,9 +1,7 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class LogingPageProvider extends ChangeNotifier {
-//   final usernameController = TextEditingController();
+class LogingPageProvider extends ChangeNotifier {
+  final usernameController = TextEditingController();
 
-//   final formKey = GlobalKey<FormState>();
-
-  
-// }
+  final formKey = GlobalKey<FormState>();
+}

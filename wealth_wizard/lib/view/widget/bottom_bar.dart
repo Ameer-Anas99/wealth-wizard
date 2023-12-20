@@ -11,6 +11,7 @@ import 'package:wealth_wizard/view/transaction/addscreen/add_screen.dart';
 
 // ignore: must_be_immutable
 class BottomBar extends StatefulWidget {
+  int initialIndex = 0;
   String username;
   File file;
   BottomBar({super.key, required this.username, required this.file});
@@ -31,6 +32,8 @@ class _BottomBarState extends State<BottomBar> {
       const TransactionScreen(),
       const settings(),
     ];
+    final provider = Provider.of<BottonBarProvider>(context, listen: false);
+    provider.indexcolor = widget.initialIndex;
   }
 
   @override
