@@ -150,10 +150,6 @@ Padding explain() {
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Select explain';
-            } else if (value.contains(' ')) {
-              return 'Please remove spaces';
-            } else if (!RegExp(r'^[a-z]+$').hasMatch(value)) {
-              return 'Please Enter a valid number';
             } else {
               return null;
             }
