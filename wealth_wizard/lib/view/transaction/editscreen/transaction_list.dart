@@ -21,7 +21,7 @@ class TransactionScreen extends StatelessWidget {
           ],
           flexibleSpace: Container(),
           title: const Text(
-            'Transactions',
+            'Transactions History',
             style: TextStyle(fontSize: 25),
           ),
           centerTitle: true,

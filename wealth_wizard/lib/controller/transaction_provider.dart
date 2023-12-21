@@ -79,7 +79,7 @@ class TransactionProvider extends ChangeNotifier {
   List<TransactionModel> taskModelList = <TransactionModel>[];
 
   List queryResultList = [];
-  String queryval = '';
+  String query1 = '';
   addToQueryList(String query) async {
     queryResultList.clear();
 

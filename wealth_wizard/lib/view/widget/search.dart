@@ -22,6 +22,7 @@ class SearchField extends StatelessWidget {
                 controller: provider.searchQueryController,
                 onChanged: (query) {
                   provider.addToQueryList(query);
+                  provider.query1 = query;
                 },
                 decoration: InputDecoration(
                     hintText: 'Search..',
@@ -34,7 +35,7 @@ class SearchField extends StatelessWidget {
                           // overViewListNotifier.value =
                           //     Dbprovider.instance.transactionListNotifier.value;
                           // Provider.searchQueryController.clear();
-                          provider.queryval = '';
+                          provider.query1 = '';
                           provider.searchQueryController.clear();
                           provider.addToQueryList('');
                           FocusManager.instance.primaryFocus?.unfocus();
