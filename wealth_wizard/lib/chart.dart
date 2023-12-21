@@ -45,7 +45,7 @@ List<TransactionModel> month() {
 List<TransactionModel> year() {
   List<TransactionModel> a = [];
   var history = box.values.toList();
-  DateTime date = new DateTime.now();
+  DateTime date = DateTime.now();
   for (var i = 0; i < history.length; i++) {
     if (history[i].datetime.year == date.year) {
       a.add(history[i]);
@@ -54,7 +54,7 @@ List<TransactionModel> year() {
   return a;
 }
 
-int total_chart(List<TransactionModel> history) {
+int totalchart(List<TransactionModel> history) {
   List a = [0, 0];
 
   for (var i = 0; i < history.length; i++) {
@@ -84,10 +84,9 @@ List time(List<TransactionModel> history, bool hour) {
         }
       }
     }
-    total.add(total_chart(a));
+    total.add(totalchart(a));
     a.clear();
     c = counter;
   }
-  print(total);
   return total;
 }

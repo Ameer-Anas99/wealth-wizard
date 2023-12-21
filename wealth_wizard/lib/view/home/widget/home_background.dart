@@ -28,11 +28,9 @@ class _HomeBackgroundState extends State<HomeBackground> {
           widget.username = storedUsername;
         });
       }
-      if (storedImageBox != null) {
-        setState(() {
-          widget.file = storedImagePath;
-        });
-      }
+      setState(() {
+        widget.file = storedImagePath;
+      });
     });
   }
 

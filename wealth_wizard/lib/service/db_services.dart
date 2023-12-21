@@ -27,7 +27,7 @@ class DbServices {
           await Hive.openBox<TransactionModel>(transactionDBName);
       transactionDB.put(value.id, value);
     } catch (e) {
-      print('Error editing transaction: $e');
+      // print('Error editing transaction: $e');
     }
   }
 }

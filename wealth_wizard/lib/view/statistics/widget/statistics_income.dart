@@ -34,11 +34,11 @@ class IncomeChart extends StatelessWidget {
                           incomeDate.category,
                       yValueMapper: (TransactionModel incomeDate, _) =>
                           int.parse(incomeDate.amount),
-                      dataLabelSettings: DataLabelSettings(
+                      dataLabelSettings: const DataLabelSettings(
                         isVisible: true,
                       ))
                 ],
-                legend: Legend(
+                legend: const Legend(
                     isVisible: true,
                     overflowMode: LegendItemOverflowMode.scroll,
                     alignment: ChartAlignment.center),

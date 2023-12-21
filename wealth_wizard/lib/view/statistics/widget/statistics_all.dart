@@ -26,7 +26,7 @@ class AllScreen extends StatelessWidget {
             };
             List<Map> totalMap = [incomeMap, expenseMap];
             return transactionProvider.chartList.isEmpty
-                ? SingleChildScrollView(
+                ? const SingleChildScrollView(
                     child: Column(
                       children: [
                         Text('No data Found'),
@@ -42,11 +42,11 @@ class AllScreen extends StatelessWidget {
                             dataSource: totalMap,
                             xValueMapper: (Map data, _) => data['name'],
                             yValueMapper: (Map data, _) => data['amount'],
-                            dataLabelSettings: DataLabelSettings(
+                            dataLabelSettings: const DataLabelSettings(
                               isVisible: true,
                             ))
                       ],
-                      legend: Legend(
+                      legend: const Legend(
                           isVisible: true,
                           overflowMode: LegendItemOverflowMode.scroll,
                           alignment: ChartAlignment.center),

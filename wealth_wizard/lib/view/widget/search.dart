@@ -23,6 +23,7 @@ class SearchField extends StatelessWidget {
                 onChanged: (query) {
                   provider.addToQueryList(query);
                   provider.query1 = query;
+                  provider.searchResult(context, provider.query1);
                 },
                 decoration: InputDecoration(
                     hintText: 'Search..',

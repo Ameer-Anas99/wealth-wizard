@@ -30,7 +30,7 @@ class _BottomBarState extends State<BottomBar> {
       HomeScreen(username: widget.username, file: widget.file),
       const StatisticsScreen(),
       const TransactionScreen(),
-      const settings(),
+      const Settings(),
     ];
     final provider = Provider.of<BottonBarProvider>(context, listen: false);
     provider.indexcolor = widget.initialIndex;
@@ -40,7 +40,6 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Consumer<BottonBarProvider>(
       builder: (context, provider, child) {
-        print("Index Color: ${provider.indexcolor}");
         return Scaffold(
           body: screen[provider.indexcolor],
           floatingActionButton: FloatingActionButton(

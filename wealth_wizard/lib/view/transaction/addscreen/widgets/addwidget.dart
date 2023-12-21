@@ -86,7 +86,7 @@ Padding type() {
   );
 }
 
-Padding transactionAmount() {
+Padding amount() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Consumer<TransactionProvider>(builder: (context, provider, child) {
@@ -178,7 +178,7 @@ Padding explain() {
   );
 }
 
-Padding name() {
+Padding category() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Consumer<TransactionProvider>(builder: (context, provider, child) {
@@ -189,7 +189,7 @@ Padding name() {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             width: 2,
-            color: Color.fromARGB(255, 184, 182, 182),
+            color: const Color.fromARGB(255, 184, 182, 182),
           ),
         ),
         child: DropdownButtonFormField<String>(
@@ -227,7 +227,7 @@ Padding name() {
               .map(
                 (e) => Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 42,
                       child: Image.asset('assets/$e.jpeg'),
                     ),

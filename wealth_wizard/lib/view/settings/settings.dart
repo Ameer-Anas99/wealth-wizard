@@ -4,8 +4,8 @@ import 'package:wealth_wizard/controller/settingsprovider.dart';
 import 'package:wealth_wizard/view/settings/widget/about.dart';
 import 'package:wealth_wizard/view/settings/widget/terms_condition.dart';
 
-class settings extends StatelessWidget {
-  const settings({super.key});
+class Settings extends StatelessWidget {
+  const Settings({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class settings extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: const Color.fromARGB(255, 95, 13, 109),
-        title: Center(
+        title: const Center(
           child: Text(
             'Settings',
             style: TextStyle(

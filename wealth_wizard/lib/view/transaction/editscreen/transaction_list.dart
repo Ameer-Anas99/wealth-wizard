@@ -1,10 +1,8 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
-
 import 'package:flutter/material.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/transaction_all.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/transaction_expence.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/transaction_income.dart';
-import 'package:wealth_wizard/view/widget/date_filter.dart';
 import 'package:wealth_wizard/view/widget/search.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -16,9 +14,6 @@ class TransactionScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            DateFilterTransaction(),
-          ],
           flexibleSpace: Container(),
           title: const Text(
             'Transactions History',

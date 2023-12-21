@@ -49,7 +49,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
       const Duration(seconds: 5),
     );
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => ScreenLogin()));
+        MaterialPageRoute(builder: (context) => const ScreenLogin()));
   }
 
   Future<void> checkUserLoggedIn() async {
@@ -58,6 +58,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
     if (userLoggedIn == null || userLoggedIn == false) {
       gotoLogin();
     } else {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (ctx) => BottomBar(
             username: "", file: File('wealth_wizard/assets/Education.jpeg')),

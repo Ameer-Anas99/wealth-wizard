@@ -59,10 +59,10 @@ class TransactionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  searchResult(BuildContext context, String query) {
+  searchResult(BuildContext context, String query1) {
     final dbprovider = Provider.of<Dbprovider>(context, listen: false);
-    if (query.isEmpty || query == '') {
-      debugPrint(query);
+    if (query1.isEmpty || query1 == '') {
+      debugPrint(query1);
       dbprovider.transactionList = dbprovider.chartList;
     } else {
       // overViewListNotifier.value = overViewListNotifier.value
@@ -70,8 +70,8 @@ class TransactionProvider extends ChangeNotifier {
           .where((element) =>
               element.category
                   .toLowerCase()
-                  .contains(query.trim().toLowerCase()) ||
-              element.explain.contains(query.trim().toLowerCase()))
+                  .contains(query1.trim().toLowerCase()) ||
+              element.explain.contains(query1.trim().toLowerCase()))
           .toList();
     }
   }
@@ -80,17 +80,17 @@ class TransactionProvider extends ChangeNotifier {
 
   List queryResultList = [];
   String query1 = '';
-  addToQueryList(String query) async {
+  addToQueryList(String query1) async {
     queryResultList.clear();
 
-    if (query.isEmpty || query == '') {
+    if (query1.isEmpty || query1 == '') {
       queryResultList.clear();
     } else {
       for (var element in taskModelList) {
         if (element.explain
             .trim()
             .toLowerCase()
-            .contains(query.trim().toLowerCase())) {
+            .contains(query1.trim().toLowerCase())) {
           queryResultList.add(element.explain);
         }
       }

@@ -101,7 +101,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           onPressed: () {
                             getgall();
                           },
-                          color: Color.fromARGB(255, 59, 95, 112),
+                          color: const Color.fromARGB(255, 59, 95, 112),
                           child: const Text(
                             'Take From Gallery',
                             style: TextStyle(color: Colors.white),
@@ -132,7 +132,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: 'Username',
-                          hintStyle: TextStyle(color: Colors.white)),
+                          hintStyle: const TextStyle(color: Colors.white)),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Required Name';
@@ -167,7 +167,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color.fromARGB(255, 59, 95, 112),
+                        color: const Color.fromARGB(255, 59, 95, 112),
                       ),
                       width: size.height * 0.18,
                       height: size.width * 0.12,

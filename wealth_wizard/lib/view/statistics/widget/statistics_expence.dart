@@ -27,7 +27,7 @@ class ExpenceChart extends StatelessWidget {
                   ),
                 )
               : SfCircularChart(
-                  palette: [Color.fromARGB(224, 167, 79, 71)],
+                  palette: const [Color.fromARGB(224, 167, 79, 71)],
                   series: <CircularSeries>[
                     PieSeries<TransactionModel, String>(
                         dataSource: allincome,
@@ -35,11 +35,11 @@ class ExpenceChart extends StatelessWidget {
                             expenseDate.category,
                         yValueMapper: (TransactionModel expenseDate, _) =>
                             num.parse(expenseDate.amount),
-                        dataLabelSettings: DataLabelSettings(
+                        dataLabelSettings: const DataLabelSettings(
                           isVisible: true,
                         ))
                   ],
-                  legend: Legend(
+                  legend: const Legend(
                       isVisible: true,
                       overflowMode: LegendItemOverflowMode.scroll,
                       alignment: ChartAlignment.center),

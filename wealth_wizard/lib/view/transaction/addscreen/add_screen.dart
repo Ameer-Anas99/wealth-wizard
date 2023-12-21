@@ -10,8 +10,8 @@ import 'package:wealth_wizard/controller/db_function.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
 class AddTransaction extends StatefulWidget {
-  File file;
-  AddTransaction({super.key, required this.file});
+  final File file;
+  const AddTransaction({super.key, required this.file});
 
   @override
   State<AddTransaction> createState() => _AddTransactionState();
@@ -55,7 +55,7 @@ class _AddTransactionState extends State<AddTransaction> {
               const SizedBox(
                 height: 20,
               ),
-              name(),
+              category(),
               const SizedBox(
                 height: 20,
               ),
@@ -63,7 +63,7 @@ class _AddTransactionState extends State<AddTransaction> {
               const SizedBox(
                 height: 20,
               ),
-              transactionAmount(),
+              amount(),
               const SizedBox(
                 height: 20,
               ),
@@ -122,11 +122,13 @@ class _AddTransactionState extends State<AddTransaction> {
 
     await dbprovider.insertTransaction(model);
 
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (context) => BottomBar(username: "", file: widget.file),
     ));
     dbprovider.getAllData();
 
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text(

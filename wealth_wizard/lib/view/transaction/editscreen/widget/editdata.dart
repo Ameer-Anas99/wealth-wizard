@@ -90,7 +90,7 @@ class _EditTransactionState extends State<EditData> {
             const SizedBox(
               height: 20,
             ),
-            Category(),
+            category(),
             const SizedBox(
               height: 20,
             ),
@@ -162,7 +162,7 @@ class _EditTransactionState extends State<EditData> {
                 initialDate: value.obj.datetime,
                 firstDate: DateTime(2020),
                 lastDate: DateTime(2100));
-            if (newDate == Null) return;
+            if (newDate == null) return;
             // setState(() {
             //   date = newDate!;
             // });
@@ -195,7 +195,7 @@ class _EditTransactionState extends State<EditData> {
               child: DropdownButtonFormField<String>(
                 hint: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 40,
                       child: Image.asset('assets/${widget.obj.type}.jpeg'),
                     ),
@@ -318,7 +318,7 @@ class _EditTransactionState extends State<EditData> {
     );
   }
 
-  Padding Category() {
+  Padding category() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Consumer<TransactionProvider>(builder: (context, provider, child) {
@@ -372,7 +372,7 @@ class _EditTransactionState extends State<EditData> {
                 .map(
                   (e) => Row(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 42,
                         child: Image.asset('assets/$e.jpeg'),
                       ),

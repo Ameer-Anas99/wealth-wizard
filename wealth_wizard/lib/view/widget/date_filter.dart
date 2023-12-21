@@ -114,6 +114,7 @@ class DateFilterStatistics extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class DateFilterTransaction extends StatelessWidget {
   DateFilterTransaction({super.key});
 

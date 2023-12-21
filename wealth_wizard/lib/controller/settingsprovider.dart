@@ -25,6 +25,7 @@ class Reset extends ChangeNotifier {
                   // Dbprovider().transactionListNotifier.clear();
                   // Dbprovider().transactionListNotifier.notifyListeners();
                   clearSharedPreferences();
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => const ScreenLogin(),

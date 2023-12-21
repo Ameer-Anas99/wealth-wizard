@@ -8,8 +8,6 @@ class TransactionIncome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final double screenHeight = size.height;
     return Consumer<Dbprovider>(builder: (context, value, child) {
       var incomeList = value.transactionList
           .where(
@@ -20,10 +18,13 @@ class TransactionIncome extends StatelessWidget {
       return (reversedIncomeList.isEmpty)
           ? Column(
               children: [
-                SizedBox(height: screenHeight / 4.5),
+                const SizedBox(
+                  height: 15,
+                  width: 14,
+                ),
                 Center(
                   child: Image.asset(
-                    "photos/Empty Box.png",
+                    "assets/errorimage.png",
                     fit: BoxFit.fill,
                   ),
                 ),

@@ -9,8 +9,8 @@ class About extends StatelessWidget {
       child: Scaffold(
           backgroundColor: Colors.grey,
           appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 122, 27, 139),
-            title: Text(
+            backgroundColor: const Color.fromARGB(255, 122, 27, 139),
+            title: const Text(
               "About",
               style: TextStyle(
                   fontSize: 25,
@@ -62,7 +62,7 @@ class About extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Center(
+                    const Center(
                       child: Text(
                         'Ameer Anas C',
                         style: TextStyle(
