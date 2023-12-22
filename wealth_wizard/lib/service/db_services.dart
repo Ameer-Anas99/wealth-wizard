@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
 class DbServices {
@@ -27,7 +27,7 @@ class DbServices {
           await Hive.openBox<TransactionModel>(transactionDBName);
       transactionDB.put(value.id, value);
     } catch (e) {
-      // print('Error editing transaction: $e');
+      print('Error editing transaction: $e');
     }
   }
 }

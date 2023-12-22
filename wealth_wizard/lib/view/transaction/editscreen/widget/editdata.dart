@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
@@ -41,7 +41,7 @@ class _EditTransactionState extends State<EditData> {
 
   @override
   void initState() {
-    final provider = Provider.of<TransactionProvider>(context, listen: false);
+    final provider = Provider.of<TransactionProvider>(context);
     super.initState();
     super.initState();
     provider.amountTextEditingController =
@@ -348,13 +348,14 @@ class _EditTransactionState extends State<EditData> {
             items: provider.item
                 .map(
                   (e) => DropdownMenuItem<String>(
+                    value: e,
                     child: Container(
                       alignment: Alignment.center,
                       child: Row(
                         children: [
-                          const SizedBox(
+                          SizedBox(
                             width: 40,
-                            // child: Image.asset('assets/$e.jpeg'),
+                            child: Image.asset('assets/$e.jpeg'),
                           ),
                           const SizedBox(width: 10),
                           Text(
@@ -364,7 +365,6 @@ class _EditTransactionState extends State<EditData> {
                         ],
                       ),
                     ),
-                    value: e,
                   ),
                 )
                 .toList(),
@@ -461,6 +461,7 @@ class _EditTransactionState extends State<EditData> {
         id: widget.obj.id);
 
     await provider.editTransaction(model);
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 }

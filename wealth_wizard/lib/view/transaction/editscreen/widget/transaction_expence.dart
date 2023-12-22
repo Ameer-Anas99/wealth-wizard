@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/slidable_transaction.dart';
 
 class TransactionExpence extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/editdata.dart';
 import 'package:wealth_wizard/view/uppercase.dart';

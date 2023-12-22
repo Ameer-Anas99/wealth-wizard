@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
 
 class TransactionProvider extends ChangeNotifier {
   TextEditingController searchQueryController = TextEditingController();
-
+  // TransactionProvider() {
+  // }
   final List<String> day = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
   DateTime date = DateTime.now();
 

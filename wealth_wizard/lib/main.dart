@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/bottombar_provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/controller/loginpage_provider.dart';
 import 'package:wealth_wizard/controller/settingsprovider.dart';
 import 'package:wealth_wizard/controller/statistics_provider.dart';

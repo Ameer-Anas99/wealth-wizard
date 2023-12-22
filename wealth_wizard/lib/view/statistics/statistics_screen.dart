@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:provider/provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/controller/statistics_provider.dart';
 import 'package:wealth_wizard/view/statistics/widget/statistics_all.dart';
 import 'package:wealth_wizard/view/statistics/widget/statistics_expence.dart';

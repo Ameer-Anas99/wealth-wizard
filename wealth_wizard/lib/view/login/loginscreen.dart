@@ -152,9 +152,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         MaterialPageRoute(
                           builder: (ctx) => BottomBar(
                             username: usernameController.text,
-
-                            file: File(''),
-                            // wealth_wizard/assets/Education.jpeg
+                            file: File(' wealth_wizard/assets/Education.jpeg'),
                           ),
                         ),
                       );

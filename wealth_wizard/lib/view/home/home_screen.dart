@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wealth_wizard/controller/db_function.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 import 'package:wealth_wizard/controller/utility_provider.dart';
 import 'package:wealth_wizard/view/home/widget/home_background.dart';

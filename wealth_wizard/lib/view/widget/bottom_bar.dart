@@ -51,8 +51,8 @@ class _BottomBarState extends State<BottomBar> {
                 ),
               );
             },
-            child: const Icon(Icons.add),
             backgroundColor: Colors.purple,
+            child: const Icon(Icons.add),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
