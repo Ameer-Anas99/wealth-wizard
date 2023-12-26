@@ -75,13 +75,13 @@ class _HomeBackgroundState extends State<HomeBackground> {
                               ),
                             ],
                           ),
-                          // Text(
-                          //   'Welcome back!',
-                          //   style: TextStyle(
-                          //       fontWeight: FontWeight.w500,
-                          //       fontSize: 19,
-                          //       color: Color.fromARGB(255, 224, 223, 223)),
-                          // ),
+                          const Text(
+                            'Welcome back!',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 19,
+                                color: Color.fromARGB(255, 224, 223, 223)),
+                          ),
                         ],
                       ),
                     )

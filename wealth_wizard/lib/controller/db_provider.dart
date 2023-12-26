@@ -8,6 +8,7 @@ class Dbprovider extends ChangeNotifier {
   // List<TransactionModel> transactionListNotifier = [];
   List<TransactionModel> chartList = [];
   List<TransactionModel> transactionList = [];
+  bool isEdit = false;
 
   DbServices dbServicesc = DbServices();
 
@@ -34,6 +35,11 @@ class Dbprovider extends ChangeNotifier {
 
   void allDbList() {
     chartList = transactionList;
+    notifyListeners();
+  }
+
+  void isEditValueChange(bool value) {
+    isEdit = value;
     notifyListeners();
   }
 }

@@ -11,7 +11,10 @@ import 'package:wealth_wizard/model/add_data.dart';
 
 class AddTransaction extends StatefulWidget {
   final File file;
-  const AddTransaction({super.key, required this.file});
+  final String? id;
+  final TransactionModel? obj;
+
+  const AddTransaction({super.key, required this.file, this.id, this.obj});
 
   @override
   State<AddTransaction> createState() => _AddTransactionState();
@@ -21,6 +24,25 @@ class _AddTransactionState extends State<AddTransaction> {
   void initstate() {
     super.initState();
     UtilityProvider().income();
+    // Provider.of<Dbprovider>(context).isEdit = true;
+    final obj = widget.obj;
+    final dbProvider = Provider.of<Dbprovider>(context, listen: false);
+    final transactionProvider =
+        Provider.of<TransactionModel>(context, listen: false);
+
+    if (dbProvider.isEdit == false) {
+      transactionProvider.type = obj!.type;
+      transactionProvider.amount = obj.amount;
+      transactionProvider.category = obj.category;
+      transactionProvider.datetime = obj.datetime;
+      transactionProvider.explain = obj.explain;
+    } else {
+      transactionProvider.type = " ";
+      transactionProvider.amount = "";
+      transactionProvider.category = "";
+      // transactionProvider.datetime = null;
+      transactionProvider.explain = "";
+    }
   }
 
   @override
@@ -74,12 +96,15 @@ class _AddTransactionState extends State<AddTransaction> {
               GestureDetector(
                 onTap: () {
                   if (provider.formKey.currentState!.validate()) {
-                    addTransaction();
+                    Provider.of<Dbprovider>(context).isEditValueChange(true);
+                    Provider.of<Dbprovider>(context, listen: false).isEdit
+                        ? addTransaction()
+                        : submitEditIncomeData();
 
-                    provider.amountcontroller.clear();
-                    provider.explainController.clear();
-                    provider.selectedIN = null;
-                    provider.selctedItem = null;
+                    // provider.amountcontroller.clear();
+                    // provider.explainController.clear();
+                    // provider.selectedIN = null;
+                    // provider.selctedItem = null;
                   }
                 },
                 child: Container(
@@ -90,8 +115,8 @@ class _AddTransactionState extends State<AddTransaction> {
                   ),
                   width: 120,
                   height: 50,
-                  child: const Text(
-                    'Save',
+                  child: Text(
+                    Provider.of<Dbprovider>(context).isEdit ? 'Save' : 'Update',
                     style: TextStyle(
                       fontFamily: 'f',
                       fontWeight: FontWeight.w600,
@@ -106,6 +131,25 @@ class _AddTransactionState extends State<AddTransaction> {
         ),
       ),
     );
+  }
+
+  Future<void> submitEditIncomeData() async {
+    final provider = Provider.of<Dbprovider>(context, listen: false);
+    final value = Provider.of<TransactionProvider>(context, listen: false);
+    final explainText = value.explainTextEditingController.text;
+    final amountText = value.amountTextEditingController.text;
+
+    final model = TransactionModel(
+        type: value.selectedEdittype!,
+        amount: amountText,
+        datetime: value.date,
+        explain: explainText,
+        category: value.selectedEditCategory!,
+        id: widget.obj!.id);
+
+    await provider.editTransaction(model);
+    // ignore: use_build_context_synchronously
+    Navigator.of(context).pop();
   }
 
   Future addTransaction() async {

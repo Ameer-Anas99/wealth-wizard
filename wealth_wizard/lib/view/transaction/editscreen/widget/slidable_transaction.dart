@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/model/add_data.dart';
+import 'package:wealth_wizard/view/transaction/addscreen/add_screen.dart';
 import 'package:wealth_wizard/view/transaction/editscreen/widget/editdata.dart';
 import 'package:wealth_wizard/view/uppercase.dart';
 
@@ -22,7 +26,13 @@ class SlidableTransaction extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: ((context) {
-                  return EditData(obj: transaction);
+                  // return EditData(obj: transaction);
+                  Provider.of<Dbprovider>(context).isEditValueChange(false);
+                  return AddTransaction(
+                    file: File(""),
+                    obj: transaction,
+                    id: transaction.id,
+                  );
                 }),
               ),
             );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wealth_wizard/controller/db_provider.dart';
 import 'package:wealth_wizard/controller/transaction_provider.dart';
 
 Container dateTime() {
@@ -285,9 +286,11 @@ Column backgroundContainer(BuildContext context) {
                     },
                     child: const Icon(Icons.arrow_back, color: Colors.white),
                   ),
-                  const Center(
+                  Center(
                     child: Text(
-                      'Add Transaction',
+                      Provider.of<Dbprovider>(context).isEdit
+                          ? 'Add Transaction'
+                          : "Edit Transaction",
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w600,
